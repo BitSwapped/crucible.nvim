@@ -3,6 +3,7 @@
 local M = {}
 
 function M.get(theme)
+	local ui = theme.ui
 	local syn = theme.syn
 	local diff = theme.diff
 
@@ -21,7 +22,7 @@ function M.get(theme)
 		["@constant.macro"] = { fg = syn.preproc },
 
 		-- Modules & labels
-		["@module"] = { fg = syn.namespace },
+		["@module"] = { fg = syn.namespace, italic = true },
 		["@module.builtin"] = { fg = syn.builtin },
 		["@label"] = { fg = syn.special },
 
@@ -69,8 +70,8 @@ function M.get(theme)
 		["@keyword"] = { fg = syn.keyword },
 		["@keyword.coroutine"] = { fg = syn.keyword_special, italic = true },
 		["@keyword.function"] = { fg = syn.keyword },
-		["@keyword.operator"] = { fg = syn.keyword },
-		["@keyword.import"] = { fg = syn.preproc },
+		["@keyword.operator"] = { fg = syn.operator },
+		["@keyword.import"] = { fg = syn.namespace },
 		["@keyword.type"] = { fg = syn.type },
 		["@keyword.modifier"] = { fg = syn.storage },
 		["@keyword.repeat"] = { fg = syn.keyword },
@@ -89,8 +90,8 @@ function M.get(theme)
 		["@comment"] = { fg = syn.comment, italic = true },
 		["@comment.documentation"] = { fg = syn.doc_comment, italic = true },
 		["@comment.error"] = { fg = syn.red, bold = true },
-		["@comment.warning"] = { fg = syn.yellow, bold = true },
-		["@comment.todo"] = { fg = syn.cyan, bold = true },
+		["@comment.warning"] = { fg = syn.orange, bold = true },
+		["@comment.todo"] = { fg = syn.lime, bold = true },
 		["@comment.note"] = { fg = syn.teal, bold = true },
 
 		-- Markup (Markdown, HTML, etc.)
@@ -99,7 +100,7 @@ function M.get(theme)
 		["@markup.strikethrough"] = { strikethrough = true },
 		["@markup.underline"] = { underline = true },
 		["@markup.heading"] = { fg = syn.keyword, bold = true },
-		["@markup.heading.1"] = { fg = syn.keyword, bold = true },
+		["@markup.heading.1"] = { fg = syn.lime, bold = true },
 		["@markup.heading.2"] = { fg = syn.type, bold = true },
 		["@markup.heading.3"] = { fg = syn.func, bold = true },
 		["@markup.heading.4"] = { fg = syn.method, bold = true },
@@ -129,7 +130,7 @@ function M.get(theme)
 
 		-- Neovim-specific / vimdoc
 		["@none"] = {},
-		["@conceal"] = { fg = syn.ash },
+		["@conceal"] = { fg = ui.base6 },
 	}
 end
 
