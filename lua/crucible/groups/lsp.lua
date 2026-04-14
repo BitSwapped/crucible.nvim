@@ -3,7 +3,6 @@
 local M = {}
 
 function M.get(theme)
-	local syn = theme.syn
 	local diag = theme.diag
 	local ui = theme.ui
 
@@ -32,93 +31,35 @@ function M.get(theme)
 		DiagnosticSignWarn = { fg = diag.warn },
 		DiagnosticSignInfo = { fg = diag.info },
 		DiagnosticSignHint = { fg = diag.hint },
-		DiagnosticSignOk = { fg = syn.green },
+		DiagnosticSignOk = { fg = diag.ok },
 
 		-- Diagnostic Base
 		DiagnosticError = { fg = diag.error },
 		DiagnosticWarn = { fg = diag.warn },
 		DiagnosticInfo = { fg = diag.info },
 		DiagnosticHint = { fg = diag.hint },
-		DiagnosticOk = { fg = syn.green },
+		DiagnosticOk = { fg = diag.ok },
 
 		-- Diagnostic Virtual Text
 		DiagnosticVirtualTextError = { fg = diag.error, bg = diag.error_bg, italic = true },
 		DiagnosticVirtualTextWarn = { fg = diag.warn, bg = diag.warn_bg, italic = true },
 		DiagnosticVirtualTextInfo = { fg = diag.info, bg = diag.info_bg, italic = true },
 		DiagnosticVirtualTextHint = { fg = diag.hint, bg = diag.hint_bg, italic = true },
-		DiagnosticVirtualTextOk = { fg = syn.green, bg = diag.hint_bg, italic = true },
+		DiagnosticVirtualTextOk = { fg = diag.ok, bg = diag.ok_bg, italic = true },
 
 		-- Diagnostic Underlines
 		DiagnosticUnderlineError = { undercurl = true, sp = diag.error },
 		DiagnosticUnderlineWarn = { undercurl = true, sp = diag.warn },
 		DiagnosticUnderlineInfo = { undercurl = true, sp = diag.info },
 		DiagnosticUnderlineHint = { undercurl = true, sp = diag.hint },
-		DiagnosticUnderlineOk = { undercurl = true, sp = syn.green },
+		DiagnosticUnderlineOk = { undercurl = true, sp = diag.ok },
 
 		-- Diagnostic Floats
 		DiagnosticFloatingError = { fg = diag.error },
 		DiagnosticFloatingWarn = { fg = diag.warn },
 		DiagnosticFloatingInfo = { fg = diag.info },
 		DiagnosticFloatingHint = { fg = diag.hint },
-		DiagnosticFloatingOk = { fg = syn.green },
-
-		-- Legacy LspDiagnostics
-		LspDiagnosticsDefaultError = { fg = diag.error },
-		LspDiagnosticsDefaultWarning = { fg = diag.warn },
-		LspDiagnosticsDefaultInformation = { fg = diag.info },
-		LspDiagnosticsDefaultHint = { fg = diag.hint },
-
-		LspDiagnosticsError = { fg = diag.error },
-		LspDiagnosticsWarning = { fg = diag.warn },
-		LspDiagnosticsInformation = { fg = diag.info },
-		LspDiagnosticsHint = { fg = diag.hint },
-
-		LspDiagnosticsVirtualTextError = { fg = diag.error, bg = diag.error_bg, italic = true },
-		LspDiagnosticsVirtualTextWarning = { fg = diag.warn, bg = diag.warn_bg, italic = true },
-		LspDiagnosticsVirtualTextInformation = { fg = diag.info, bg = diag.info_bg, italic = true },
-		LspDiagnosticsVirtualTextHint = { fg = diag.hint, bg = diag.hint_bg, italic = true },
-
-		LspDiagnosticsUnderlineError = { undercurl = true, sp = diag.error },
-		LspDiagnosticsUnderlineWarning = { undercurl = true, sp = diag.warn },
-		LspDiagnosticsUnderlineInformation = { undercurl = true, sp = diag.info },
-		LspDiagnosticsUnderlineHint = { undercurl = true, sp = diag.hint },
-
-		-- Semantic Token Types
-		["@lsp.type.class"] = { link = "@type" },
-		["@lsp.type.comment"] = { link = "@comment" },
-		["@lsp.type.decorator"] = { link = "@attribute" },
-		["@lsp.type.enum"] = { link = "@type" },
-		["@lsp.type.enumMember"] = { link = "@constant" },
-		["@lsp.type.function"] = { link = "@function" },
-		["@lsp.type.interface"] = { link = "@type" },
-		["@lsp.type.keyword"] = { link = "@keyword" },
-		["@lsp.type.macro"] = { link = "@function.macro" },
-		["@lsp.type.method"] = { link = "@function.method" },
-		["@lsp.type.namespace"] = { link = "@module" },
-		["@lsp.type.number"] = { link = "@number" },
-		["@lsp.type.operator"] = { link = "@operator" },
-		["@lsp.type.parameter"] = { link = "@variable.parameter" },
-		["@lsp.type.property"] = { link = "@property" },
-		["@lsp.type.string"] = { link = "@string" },
-		["@lsp.type.struct"] = { link = "@type" },
-		["@lsp.type.type"] = { link = "@type" },
-		["@lsp.type.typeParameter"] = { link = "@type.definition" },
-		["@lsp.type.variable"] = { link = "@variable" },
-
-		-- Semantic Token Modifiers
-		-- readonly
-		["@lsp.typemod.variable.readonly"] = { fg = syn.constant },
-		-- globals
-		["@lsp.typemod.variable.global"] = { fg = syn.constant, bold = true },
-		-- defaultLibrary
-		["@lsp.typemod.variable.defaultLibrary"] = { fg = syn.variable_builtin, italic = true },
-		["@lsp.typemod.function.defaultLibrary"] = { fg = syn.builtin, italic = true },
-		["@lsp.typemod.type.defaultLibrary"] = { fg = syn.builtin, italic = true },
-		-- static class members
-		["@lsp.typemod.property.static"] = { fg = syn.constant, italic = true },
-		-- deprecated
-		["@lsp.typemod.variable.deprecated"] = { fg = syn.comment, strikethrough = true },
-		["@lsp.typemod.function.deprecated"] = { fg = syn.comment, strikethrough = true },
+		DiagnosticFloatingOk = { fg = diag.ok },
 	}
 end
 
