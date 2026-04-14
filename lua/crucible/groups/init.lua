@@ -9,9 +9,10 @@ function M.get(theme, styles)
 
 	local modules = {
 		"crucible.groups.editor",
-		"crucible.groups.syntax",
 		"crucible.groups.treesitter",
+		"crucible.groups.syntax",
 		"crucible.groups.lsp",
+		"crucible.groups.semantic_tokens",
 	}
 
 	local plugins = {
