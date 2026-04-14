@@ -84,7 +84,7 @@ function M.setup(p)
 
       float_bg     = c.bg1,
       float_border = c.bg3,
-      float_title = c.lavender,
+      float_title  = c.lavender,
 
       pmenu_bg     = c.bg2,
       pmenu_sel    = c.bg3,
@@ -93,14 +93,14 @@ function M.setup(p)
       statusline_bg = c.bg1,
       statusline_fg = c.fg1,
 
-      tabline_sel = c.lavender,
-      directory = c.blue,
+      tabline_sel  = c.lavender,
+      directory    = c.blue,
 
       search_bg    = c.yellow,
       search_fg    = c.bg0,
 
       visual       = c.bg3,
-      cursorline = util.blend(c.fg1, c.bg0, 0.05),
+      cursorline   = c.bg2
     },
     syn = {
       keyword          = c.lavender,

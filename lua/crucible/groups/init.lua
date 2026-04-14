@@ -1,5 +1,3 @@
--- crucible/groups.lua
-
 local M = {}
 
 --- Gather all highlight groups from core modules and plugins
@@ -9,21 +7,31 @@ local M = {}
 function M.get(theme, styles)
 	local highlights = {}
 
-	-- Core Highlight Modules
-	local core_modules = {
+	local modules = {
 		"crucible.groups.editor",
 		"crucible.groups.syntax",
 		"crucible.groups.treesitter",
 		"crucible.groups.lsp",
 	}
 
-	for _, mod_name in ipairs(core_modules) do
+	local plugins = {
+		"crucible.groups.plugins.gitsigns",
+		"crucible.groups.plugins.indent-blankline",
+		"crucible.groups.plugins.mini_files",
+		"crucible.groups.plugins.mini_icons",
+		"crucible.groups.plugins.mini_indentscope",
+		"crucible.groups.plugins.noice",
+	}
+
+	for _, mod_name in ipairs(modules) do
+		local mod = require(mod_name)
+		highlights = vim.tbl_deep_extend("force", highlights, mod.get(theme, styles))
+	end
+
+	for _, mod_name in ipairs(plugins) do
 		local ok, mod = pcall(require, mod_name)
-		if ok then
-			local hl = mod.get(theme, styles)
-			highlights = vim.tbl_deep_extend("force", highlights, hl)
-		else
-			vim.notify("[Crucible] Failed to load core module: " .. mod_name, vim.log.levels.WARN)
+		if ok and mod.get then
+			highlights = vim.tbl_deep_extend("force", highlights, mod.get(theme, styles))
 		end
 	end
 
