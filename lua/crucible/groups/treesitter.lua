@@ -75,7 +75,7 @@ function M.get(theme)
 		["@keyword.type"] = { fg = syn.type },
 		["@keyword.modifier"] = { fg = syn.storage },
 		["@keyword.repeat"] = { fg = syn.keyword },
-		["@keyword.return"] = { fg = syn.keyword_special, bold = true },
+		["@keyword.return"] = { fg = syn.keyword, bold = true },
 		["@keyword.debug"] = { fg = syn.debug },
 		["@keyword.exception"] = { fg = syn.keyword_special },
 		["@keyword.conditional"] = { fg = syn.keyword },

@@ -75,7 +75,7 @@ function M.get(theme, styles)
 		Error = { fg = syn.red, bold = true },
 
 		-- Ignored / Generic Fallbacks
-		Ignore = { fg = ui.bg },
+		Ignore = { fg = syn.ignore },
 	}
 end
 
