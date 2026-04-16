@@ -5,46 +5,50 @@ local palette = require("crucible.palette")
 local theme = require("crucible.theme")
 
 local M = {}
-
---- Load and apply the Crucible colorscheme
----@param opts table|nil  user configuration overrides
-function M.load(opts)
-	--  Setup/merge configuration
+--- Configure crucible.  Must be called before loading the colorscheme.
+---@param opts? table
+function M.setup(opts)
 	config.setup(opts)
+end
 
-	--  Get configured flavor
-	local flavor = config.get("flavor")
+--- Load the colorscheme for `flavor`.
+---@param flavor? string  defaults to config.flavor
+function M.load(flavor)
+	local o = config.get()
+	flavor = flavor or o.flavor
 
-	--  Clear existing highlights
-	if vim.g.colors_name then
-		vim.cmd("hi clear")
+	-- prepare vim options
+	vim.cmd("highlight clear")
+	if vim.fn.exists("syntax_on") == 1 then
+		vim.cmd("syntax reset")
 	end
-
 	vim.o.termguicolors = true
-	vim.o.background = "dark"
-	vim.g.colors_name = "crucible"
+	vim.g.colors_name = "crucible-" .. flavor
 
-	--  Load raw palette
+	-- get palette for the active flavor
 	local p = palette.get(flavor)
 
-	--  Build semantic theme
+	-- build theme
 	local t = theme.setup(p)
 
-	--  Get styles from config
+	-- get styles from config
 	local styles = config.get("styles") or {}
 
-	--  Collect all highlight groups
+	-- collect all highlight groups
 	local highlights = require("crucible.groups").get(t, styles)
 
-	--  Apply highlights to Neovim
+	-- apply highlights
 	for group, hl in pairs(highlights) do
 		vim.api.nvim_set_hl(0, group, hl)
 	end
 
-	--  Set terminal colors
+	-- apply terminal colours
 	if t.term then
 		for i = 0, 15 do
-			vim.g["terminal_color_" .. i] = t.term[i]
+			local color = t.term[i]
+			if color then
+				vim.g["terminal_color_" .. i] = color
+			end
 		end
 	end
 end

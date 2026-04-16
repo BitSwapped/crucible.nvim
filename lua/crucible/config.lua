@@ -13,22 +13,32 @@ local defaults = {
 }
 
 -- Internal config state
-local config = vim.tbl_deep_extend("force", {}, defaults)
+local config = nil
+
+--- Initialize config with defaults
+local function init_config()
+	if not config then
+		config = vim.tbl_deep_extend("force", {}, defaults)
+	end
+	return config
+end
 
 --- Apply user configuration options
 function M.setup(opts)
+	local cfg = init_config()
 	if opts then
-		config = vim.tbl_deep_extend("force", config, opts)
+		config = vim.tbl_deep_extend("force", cfg, opts)
 	end
 	return config
 end
 
 --- Get current config value, or entire config table
 function M.get(key)
+	local cfg = init_config()
 	if key then
-		return config[key]
+		return cfg[key]
 	end
-	return config
+	return cfg
 end
 
 return M

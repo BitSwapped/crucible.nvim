@@ -62,6 +62,7 @@ function M.get(theme, styles)
 		-- Special Items
 		Special = { fg = syn.special },
 		SpecialChar = { link = "Special" },
+		Todo = { fg = syn.lime, bold = true },
 		Tag = { fg = syn.tag },
 		Delimiter = { fg = syn.delimiter },
 		SpecialComment = {

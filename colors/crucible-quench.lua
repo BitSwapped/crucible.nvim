@@ -1,3 +1,3 @@
 -- colors/crucible-quench.lua
 
-require("crucible").load({ flavor = "quench" })
+require("crucible").load("quench")

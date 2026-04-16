@@ -1,3 +1,3 @@
 -- colors/crucible-cast.lua
 
-require("crucible").load({ flavor = "cast" })
+require("crucible").load("cast")
